@@ -1,0 +1,2 @@
+class ListComment < ApplicationRecord
+end
