@@ -12,6 +12,12 @@
         <%= link_to "削除", list_path(@list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
       
+      <% if @list.favorited_by?(current_user) %>
+        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :delete, class: "fas fa-heart heart_red" %>
+      <% else %>
+        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :post, class: "fas fa-heart heart_blue" %>
+      <% end %>
+      
       <div class = "comments">
         <% @list.list_comments.each do |list_comment| %>
           <%= link_to user_path(list_comment.user) do %>
