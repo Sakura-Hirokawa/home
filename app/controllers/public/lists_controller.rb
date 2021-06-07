@@ -20,6 +20,7 @@ class Public::ListsController < ApplicationController
   
   def show
     @list = List.find(params[:id])
+    @list_comment = ListComment.new
   end
   
   def edit
