@@ -1,0 +1,16 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h1>マイページ</h1>
+      <p>プロフィール画像</p>
+      <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+      <p>名前</p>
+      <%= @user.name %>
+      <p>自己紹介</p>
+      <%= @user.introduction %>
+      <% if @user == current_user %>
+        <%= link_to "編集", edit_user_path(@user) %>
+        <% end %>
+    </div>
+  </div>
+</div>

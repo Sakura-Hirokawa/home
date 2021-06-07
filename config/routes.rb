@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root "homes#top"
     get "/about" => "homes#about"
+    get "/users/unsubscribe" => "users#unsubscribe"
+    patch "/users/withdraw" => "users#withdraw"
+    resources :users, only:[:show, :edit, :update]
     resources :lists
   end
 end
