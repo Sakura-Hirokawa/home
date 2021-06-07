@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :users, only:[:show, :edit, :update]
     resources :lists do
       resources :list_comments, only:[:create, :destroy]
+      resource :favorites, only:[:create, :destroy]
     end
   end
 end
