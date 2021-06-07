@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/users/unsubscribe" => "users#unsubscribe"
     patch "/users/withdraw" => "users#withdraw"
-    resources :users, only:[:show, :edit, :update]
+    resources :users, only:[:show, :edit, :update] do
+      resource :relationships, only:[:create, :destroy]
+      get "/relationship/followings" => "relationships#followings", as: "followings"
+      get "/relationship/followers" => "relationships#followers", as: "followers"
+    end
     resources :lists do
       resources :list_comments, only:[:create, :destroy]
       resource :favorites, only:[:create, :destroy]

@@ -8,9 +8,22 @@
       <%= @user.name %>
       <p>自己紹介</p>
       <%= @user.introduction %>
+      <p>フォロー</p>
+      <%= link_to @user.followings.count, user_followings_path(@user) %>
+      <p>フォロワー</p>
+      <%= link_to @user.followers.count, user_followers_path(@user) %>
+      
       <% if @user == current_user %>
         <%= link_to "編集", edit_user_path(@user) %>
+      <% else %>
+        <% unless current_user == @user %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォローを外す", user_relationships_path(@user), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
+          <% end %>
         <% end %>
+      <% end %>
     </div>
   </div>
 </div>
