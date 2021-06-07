@@ -10,6 +10,9 @@
         <%= f.label :自己紹介 %>
         <%= f.text_field :introduction %>
         <%= f.submit "保存" %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <%= link_to "退会する", unsubscribe_path(@user) %>
+        <% end %>
       <% end %>
     </div>
   </div>
