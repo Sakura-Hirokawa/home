@@ -13,9 +13,9 @@
       <% end %>
       
       <% if @list.favorited_by?(current_user) %>
-        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :delete, class: "fas fa-heart heart_red" %>
+        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :delete, class: "fas fa-heart" %>
       <% else %>
-        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :post, class: "fas fa-heart heart_blue" %>
+        <%= link_to @list.favorites.count, list_favorites_path(@list), method: :post, class: "fas fa-heart" %>
       <% end %>
       
       <div class = "comments">
