@@ -29,4 +29,9 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  
+  #退会ユーザを弾く
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end

@@ -18,9 +18,16 @@ class Public::UsersController < ApplicationController
   end
   
   def unsubscribe
+    # @user = User.find_by(email: params[:email])
+    @user = User.find(params[:id])
   end
   
   def withdraw
+    # @user = User.find_by(email: params[:email])
+    @user = User.find(params[:id])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to request.referer
   end
   
   private
@@ -30,7 +37,7 @@ class Public::UsersController < ApplicationController
   end
   
   def ensure_correct_user
-    @user =User.find(params[:id])
+    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
     end

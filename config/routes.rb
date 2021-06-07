@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root "homes#top"
     get "/about" => "homes#about"
-    get "/users/unsubscribe" => "users#unsubscribe"
-    patch "/users/withdraw" => "users#withdraw"
+    get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
+    patch "/users/:id/withdraw" => "users#withdraw", as: "withdraw"
     resources :users, only:[:show, :edit, :update] do
       resource :relationships, only:[:create, :destroy]
       get "/relationship/followings" => "relationships#followings", as: "followings"
