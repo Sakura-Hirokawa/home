@@ -1,0 +1,16 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h1>投稿詳細</h1>
+      <%= @list.user.name %>
+      <%= @list.date %>
+      <%= @list.first_item %>
+      <%= @list.second_item %>
+      <%= @list.third_item %>
+      <% if @list.user == current_user %>
+        <%= link_to "編集", edit_list_path(@list) %>
+        <%= link_to "削除", list_path(@list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+      <% end %>
+    </div>
+  </div>
+</div>
