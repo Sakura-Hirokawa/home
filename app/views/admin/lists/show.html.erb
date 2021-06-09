@@ -1,0 +1,35 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h1><%= @user.name %>さんの投稿一覧</h1>
+      <table>
+        <tbody>
+          <tr>
+            <th>投稿数</th>
+            <td><%= @user.lists.count %></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class = "table table-striped">
+        <tbody>
+          <% @user.lists.each do |list| %>
+          <tr>
+            <th>投稿No</th>
+            <th>投稿内容</th>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to list.id, edit_admin_list_path(list) %></td>
+            <td>
+              <%= list.date %>
+              <%= list.first_item %>
+              <%= list.second_item %>
+              <%= list.third_item %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
