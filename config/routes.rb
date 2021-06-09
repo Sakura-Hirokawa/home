@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admin, controller: {
+  devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
   
@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     passwords: "public/passwords",
     registrations: "public/registrations"
   }
+  
+  namespace :admin do
+    resources :users, only:[:index, :show, :edit, :update]
+  end
   
   scope module: :public do
     root "homes#top"
