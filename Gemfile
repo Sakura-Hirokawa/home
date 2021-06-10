@@ -77,3 +77,5 @@ gem 'momentjs-rails'
 gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
+
+gem 'rails-i18n', '~> 5.1' 
