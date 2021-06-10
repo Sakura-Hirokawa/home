@@ -1,7 +1,7 @@
 <header>
   <div class = "container">
     <% if user_signed_in? %>
-      <%= link_to "Mypage", user_path(current_user) %>
+      <%= link_to "Mypage", mypage_path(current_user) %>
       <%= link_to "List", lists_path %>
       <%= link_to "Calendar", my_calendar_path(current_user)%>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>

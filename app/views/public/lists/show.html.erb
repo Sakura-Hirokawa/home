@@ -20,7 +20,7 @@
       
       <div class = "comments">
         <% @list.list_comments.each do |list_comment| %>
-          <%= link_to user_path(list_comment.user) do %>
+          <%= link_to mypage_path(list_comment.user) do %>
             <%= attachment_image_tag list_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
             <%= list_comment.user.name %>
           <% end %>
