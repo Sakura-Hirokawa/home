@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/:id/withdraw" => "users#withdraw", as: "withdraw"
+    get "/my_calendar" => "events#my_calendar", as: "my_calendar"
+    resources :events, only:[:new, :create, :index, :show, :edit, :update, :destroy]
     resources :users, only:[:show, :edit, :update] do
       resource :relationships, only:[:create, :destroy]
       get "/relationship/followings" => "relationships#followings", as: "followings"

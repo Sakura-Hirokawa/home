@@ -3,7 +3,7 @@
     <% if user_signed_in? %>
       <%= link_to "Mypage", user_path(current_user) %>
       <%= link_to "List", lists_path %>
-      <p>callendar</p>
+      <%= link_to "Calendar", my_calendar_path(current_user)%>
       <%= link_to "Logout", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Top", root_path %>
