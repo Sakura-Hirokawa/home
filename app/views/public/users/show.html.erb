@@ -8,6 +8,8 @@
       <%= @user.name %>
       <p>自己紹介</p>
       <%= @user.introduction %>
+      <p>投稿数</p>
+      <%= @user.lists.count %>
       <p>フォロー</p>
       <%= link_to @user.followings.count, user_followings_path(@user) %>
       <p>フォロワー</p>
@@ -23,6 +25,14 @@
             <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
           <% end %>
         <% end %>
+      <% end %>
+      
+      <!--投稿一覧-->
+      <% @user.lists.each do |list| %>
+        <%= link_to list.date, list_path(list) %>
+        <%= list.first_item %>
+        <%= list.second_item %>
+        <%= list.third_item %>
       <% end %>
     </div>
   </div>
