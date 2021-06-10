@@ -8,6 +8,7 @@ class User < ApplicationRecord
   
   has_many :lists, dependent: :destroy
   has_many :list_comments, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_many :favorites, dependent: :destroy
   #与フォロー（フォローする）の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

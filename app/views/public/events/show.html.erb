@@ -1,0 +1,35 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-sm-12">
+      <h1>スケジュール管理</h1>
+      <!--イベント登録-->
+      <table class = "table table-bordered">
+        <tbody>
+          <tr>
+            <th>スケジュール名</th>
+            <td><%= @event.title %></td>
+          </tr>
+          <tr>
+            <th>スケジュール内容</th>
+            <td><%= @event.description %></td>
+          </tr>
+          <tr>
+            <th>開始日時</th>
+            <td><%= @event.start_at.to_s(:datetime_jp) %></td>
+          </tr>
+          <tr>
+            <th>終了日時</th>
+            <td><%= @event.end_at.to_s(:datetime_jp) %></td>
+          </tr>
+        </tbody>
+      </table>
+      <%if @event.user == current_user %>
+        <%= link_to "戻る", my_calendar_path(current_user), class: "btn btn-success" %>
+        <%= link_to "編集", edit_event_path(@event), class: "btn btn-primary" %>
+        <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+      <%end%>
+      <!--カレンダー-->
+      <div id = "calendar"></div>
+    </div>
+  </div>
+</div>

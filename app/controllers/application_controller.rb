@@ -2,10 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
-    if resorce.class.name == "Admin"
+    if resource.class.name == "Admin"
       admin_user_path
     else
-      root_path
+      user_path(current_user)
     end
   end
   
