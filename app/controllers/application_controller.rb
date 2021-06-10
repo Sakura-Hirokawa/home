@@ -3,19 +3,19 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if resource.class.name == "Admin"
-      admin_user_path
+      admin_root_path
     else
-      user_path(current_user)
+      mypage_path(current_user)
     end
   end
   
-  # def after_sign_out_path_for(resource)
-  #   if resource == :admin
-  #     new_admin_session
-  #   else
-  #     root_path
-  #   end
-  # end
+  def after_sign_out_path_for(resource)
+    if resource == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
+  end
   
   # 管理者へのアクセス制限 
   before_action :authenticate_admin!, if: :admin_url
@@ -24,10 +24,9 @@ class ApplicationController < ActionController::Base
     request.fullpath.include?("/admin")
   end
   
-  
   protected
   
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :name, :is_deleted])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :is_deleted])
   end
 end
