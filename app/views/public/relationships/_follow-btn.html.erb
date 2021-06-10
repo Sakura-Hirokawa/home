@@ -1,0 +1,26 @@
+<% if users.exists? %>
+<table class = "table">
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <th>User</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        フォロー<%= user.followings.count %>
+        フォロワー<%= user.followers.count %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>ユーザはいません</p>
+<% end %>
