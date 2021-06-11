@@ -1,18 +1,33 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <h1>投稿フォーム</h1>
-      <%= form_with model: @list, local:true do |f| %>
-      <%= f.label :日付選択 %>
-      <%= f.date_field :date %>
-      <%= f.label :一つ目の項目 %>
-      <%= f.text_field :first_item %>
-      <%= f.label :二つ目の項目 %>
-      <%= f.text_field :second_item %>
-      <%= f.label :三つ目の項目 %>
-      <%= f.text_field :third_item %>
-      <%= f.submit "投稿" %>
-      <% end %>
+    <div class = "col-sm-12 my-5">
+      <h1 class = "mb-5">達成したことを記録しましょう<i class="fas fa-music"></i></h1>
+      <table class = "table table-striped">
+        <tbody>
+          <%= form_with model: @list, local:true do |f| %>
+          <tr>
+            <th><%= f.label :日付選択 %></th>
+            <td> <%= f.date_field :date %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :ひとつめ %></th>
+            <td><%= f.text_area :first_item, size: "50x5"  %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :ふたつめ %></th>
+            <td><%= f.text_area :second_item, size: "50x5"  %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :みっつめ %></th>
+            <td><%= f.text_area :third_item, size: "50x5"  %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "今日もがんばった！", class: "btn btn-primary" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -1,16 +1,15 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <p><%= link_to "投稿へ", new_list_path %></p>
-      <h1>投稿一覧</h1>
-      <% @lists.each do |list| %>
-        <%= link_to list.date, list_path(list) %>
-        <%= list.first_item %>
-        <%= list.second_item %>
-        <%= list.third_item %>
-        <%= list.list_comments.count %>
-        <%= list.favorites.count %>
-      <% end %>
+    <div class = "col-sm-12 my-5">
+      <!--投稿一覧-->
+      <%= render 'public/lists/index', lists: @lists %>
+      
+      <!--新規投稿画面へ-->
+      <div id = "new_list">
+        <%= link_to new_list_path do %>
+          <%= image_tag 'new_list.jpeg', size: "50x50" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

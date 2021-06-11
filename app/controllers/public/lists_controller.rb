@@ -1,10 +1,12 @@
 class Public::ListsController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @list = List.new
   end
   
   def index
-    @lists = List.all
+    @lists = List.all.order("created_at DESC")
   end
   
   def create

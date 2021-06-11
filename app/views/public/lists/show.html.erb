@@ -1,24 +1,48 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <h1>投稿詳細</h1>
-      <%= @list.user.name %>
-      <%= @list.date %>
-      <%= @list.first_item %>
-      <%= @list.second_item %>
-      <%= @list.third_item %>
-      <% if @list.user == current_user %>
-        <%= link_to "編集", edit_list_path(@list) %>
-        <%= link_to "削除", list_path(@list), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <% end %>
+    <div class = "col-sm-12 my-5">
+      <h1 class = "mb-5">List</h1>
+      <table class = "table">
+        <thead>
+          <tr>
+            <th class = "text-center", style = "width: 30%">User</th>
+            <th>List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class = "text-center align-middle">
+              <%= link_to mypage_path(@list.user) do %>
+                <%= attachment_image_tag @list.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: "100x100" %>
+                <h3 class = "m-3"><%= @list.user.name %></h3>
+              <% end %>
+            </td>
+            <td class = "list">
+              <%= @list.date.strftime('%Y/%m/%d') %><br />
+              <%= @list.first_item %><br />
+              <%= @list.second_item %><br />
+              <%= @list.third_item %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class = "text-center my-5">
+        <% if @list.user == current_user %>
+          <%= link_to "編集", edit_list_path(@list), class: "btn btn-success col-2 mr-5" %>
+          <%= link_to "削除", list_path(@list), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-2" %>
+        <% end %>
+      </div>
       
+      <!--いいね-->
      <%= render 'public/favorites/favorite-btn', list: @list %>
-     
-      <div class = "comments">
-        <%= render 'public/lists/list_comments', list: @list %>
+
+      <!--コメント-->
+      <%= render 'public/list_comments/comments', list: @list %>
+        
+      <div class = "offset-sm-1 text-center mt-5">
         <%= form_with model:[@list, @list_comment], local:true do |f| %>
-          <%= f.text_area :comment %>
-          <%= f.submit "送信" %>
+          <%= f.text_area :comment, size: "50x5" %>
+          <%= f.submit "送信", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
