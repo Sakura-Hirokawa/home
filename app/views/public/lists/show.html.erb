@@ -41,10 +41,13 @@
         
       <div class = "offset-sm-1 text-center mt-5">
         <%= form_with model:[@list, @list_comment], local:true do |f| %>
-          <%= f.text_area :comment, size: "50x5" %>
+          <%= f.text_area :comment, placeholder: "頑張ったユーザを褒めましょう", size: "50x5" %>
           <%= f.submit "送信", class: "btn btn-primary" %>
         <% end %>
       </div>
+      
+      <!--新規投稿画面へ-->
+      <%= render 'public/lists/new-link' %>
     </div>
   </div>
 </div>
