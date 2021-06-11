@@ -5,11 +5,7 @@
       <%= render 'public/lists/index', lists: @lists %>
       
       <!--新規投稿画面へ-->
-      <div id = "new_list">
-        <%= link_to new_list_path do %>
-          <%= image_tag 'new_list.jpeg', size: "50x50" %>
-        <% end %>
-      </div>
+      <%= render 'public/lists/new-link' %>
     </div>
   </div>
 </div>
