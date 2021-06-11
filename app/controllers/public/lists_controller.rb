@@ -4,7 +4,7 @@ class Public::ListsController < ApplicationController
   end
   
   def index
-    @lists = List.all
+    @lists = List.all.order("created_at DESC")
   end
   
   def create

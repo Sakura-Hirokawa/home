@@ -15,7 +15,7 @@
      <%= render 'public/favorites/favorite-btn', list: @list %>
      
       <div class = "comments">
-        <%= render 'public/lists/list_comments', list: @list %>
+        <%= render 'public/list_comments/comments', list: @list %>
         <%= form_with model:[@list, @list_comment], local:true do |f| %>
           <%= f.text_area :comment %>
           <%= f.submit "送信" %>
