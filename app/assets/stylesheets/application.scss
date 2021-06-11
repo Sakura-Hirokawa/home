@@ -18,12 +18,18 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
- *{
+ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
  }
  
  header {
-  background-color: #6ec7e2;
+  background-color: #6EC7E2;
+ }
+ 
+ footer {
+  height: 100px;
+  line-height: 100px;
+  background-color: #6EC7E2;
  }

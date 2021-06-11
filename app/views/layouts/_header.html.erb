@@ -8,7 +8,7 @@
       <div class = "collapse navbar-collapse" id = "navbarNavDropdown">
         <ul class = "navbar-nav ml-auto my-3">
           <% if user_signed_in? %>
-            <li class = "nav-text pr-5">今日もえらい！<%= current_user.name %>さん！</li>
+            <li class = "nav-text pr-5"><%= current_user.name %>さん、今日もえらい！</li>
             <li><%= link_to "Mypage", mypage_path(current_user), class: "fas fa-home nav-link px-3" %></li>
             <li><%= link_to "List", lists_path, class: "fas fa-list nav-link" %></li>
             <li><%= link_to "Calendar", my_calendar_path(current_user), class: "fas fa-calendar-alt nav-link px-3" %></li>
