@@ -7,23 +7,23 @@ class Public::UsersController < ApplicationController
   end
   
   def edit
+    @user = User.find(params[:id])
   end
   
   def update
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to mypage_path(@user)
     else
       render 'edit'
     end
   end
   
   def unsubscribe
-    # @user = User.find_by(email: params[:email])
     @user = User.find(params[:id])
   end
   
   def withdraw
-    # @user = User.find_by(email: params[:email])
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to user_path(current_user)
+      redirect_to mypage_path(current_user)
     end
   end
 end
