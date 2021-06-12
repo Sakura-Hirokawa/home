@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
-      <h1><%= @user.name %>さんのユーザ編集</h1>
+    <div class = "col-sm-8 mx-auto my-5">
+      <h1 class = "mb-5"><%= @user.name %>さんのユーザ編集</h1>
       <table class = "table table-striped">
         <tbody>
           <%= form_with model: [:admin, @user], local:true do |f| %>
@@ -11,11 +11,11 @@
           </tr>
           <tr>
             <th>名前</th>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name, class: "form-control" %></td>
           </tr>
           <tr>
             <th>メールアドレス</th>
-            <td><%= f.email_field :email %></td>
+            <td><%= f.email_field :email, class: "form-control" %></td>
           </tr>
           <tr>
             <th>ユーザステータス</th>
@@ -25,8 +25,10 @@
             </td>
           </tr>
           <tr>
-            <th colspan = "1"></th>
-            <td><%= f.submit "保存" %></td>
+            <th></th>
+            <td>
+              <%= f.submit "変更内容を保存", class: "btn btn-primary mr-3" %>
+              <%= link_to "キャンセル", admin_user_path(@user), class: "btn btn-outline-info" %> </td>
           </tr>
           <% end %>
         </tbody>
