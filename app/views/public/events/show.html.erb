@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 my-5">
       <h1>スケジュール管理</h1>
       <!--イベント登録-->
-      <table class = "table table-bordered">
+      <table class = "table table-striped my-5">
         <tbody>
           <tr>
             <th>スケジュール名</th>
@@ -21,13 +21,20 @@
             <th>終了日時</th>
             <td><%= @event.end_at.strftime('%Y/%m/%d %H:%M') %></td>
           </tr>
+          <tr>
+            <th>
+              <td>
+                <%if @event.user == current_user %>
+                  <%= link_to "戻る", my_calendar_path(current_user), class: "btn btn-outline-info col-2" %>
+                  <%= link_to "編集", edit_event_path(@event), class: "btn btn-success col-2 mx-3" %>
+                  <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger col-2" %>
+                <%end%>
+              </td>
+            </th>
+          </tr>
         </tbody>
       </table>
-      <%if @event.user == current_user %>
-        <%= link_to "戻る", my_calendar_path(current_user), class: "btn btn-success" %>
-        <%= link_to "編集", edit_event_path(@event), class: "btn btn-primary" %>
-        <%= link_to "削除", event_path(@event), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
-      <%end%>
+      
       <!--カレンダー-->
       <div id = "calendar"></div>
     </div>

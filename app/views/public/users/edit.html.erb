@@ -11,17 +11,17 @@
             </tr>
             <tr>
               <th><%= f.label :名前 %></th>
-              <td><%= f.text_field :name, placeholder: "名前" %></td>
+              <td><%= f.text_field :name, placeholder: "名前", class: "form-control" %></td>
             </tr>
             <tr>
               <th><%= f.label :自己紹介 %></th>
-              <td><%= f.text_area :introduction, placeholder: "自己紹介", size: "50x5" %></td>
+              <td><%= f.text_area :introduction, placeholder: "自己紹介", class: "form-control" %></td>
             </tr>
             <tr>
               <th></th>
               <td>
                 <%= f.submit "保存", class: "btn btn-primary col-2 mr-3" %>
-                <%= link_to "キャンセル", mypage_path(@user), class: "btn btn-outline-info" %>
+                <%= link_to "キャンセル", mypage_path(@user), class: "btn btn-outline-info col-2" %>
               </td>
             </tr>
             <% end %>
