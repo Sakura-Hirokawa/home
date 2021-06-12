@@ -1,4 +1,5 @@
 class Admin::ListCommentsController < ApplicationController
+  before_action :authenticate_admin!
   
   def destroy
     ListComment.find_by(id: params[:id], list_id: params[:list_id]).destroy
