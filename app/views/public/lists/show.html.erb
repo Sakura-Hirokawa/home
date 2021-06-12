@@ -2,6 +2,7 @@
   <div class = "row">
     <div class = "col-sm-12 my-5">
       <h1 class = "mb-5"><%= @list.user.name %>さんのがんばったこと・達成したこと</h1>
+      <p class = "text-primary"><%= flash[:primary] %></p>
       <table class = "table">
         <thead>
           <tr>
@@ -34,9 +35,10 @@
       </div>
 
       <!--いいね-->
-     <%= render 'public/favorites/favorite-btn', list: @list %>
+      <%= render 'public/favorites/favorite-btn', list: @list %>
 
       <!--コメント-->
+      <p class = "offset-sm-1 text-danger"><%= flash[:danger] %></p>
       <%= render 'public/list_comments/comments', list: @list %>
 
       <div class = "offset-sm-1 text-center mt-5">

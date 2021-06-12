@@ -4,16 +4,20 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if resource.class.name == "Admin"
+      flash[:success] = "おつかれさまです！ログインしました"
       admin_root_path
     else
+      flash[:success] = "おつかれさまです！ログインしました"
       mypage_path(current_user)
     end
   end
   
   def after_sign_out_path_for(resource)
     if resource == :admin
+      flash[:danger] = "ログアウトしました"
       new_admin_session_path
     else
+      flash[:danger] = "ログアウトしました"
       root_path
     end
   end

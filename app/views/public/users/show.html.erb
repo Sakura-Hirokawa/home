@@ -2,7 +2,8 @@
   <div class = "row">
     <div class = "col-sm-12 my-5">
       <h1 class = "mb-5">マイページ</h1>
-
+      <p class = "text-primary"><%= flash[:primary] %></p>
+      <p class = "text-success"><%= flash[:success] %></p>
       <div class = "d-flex mx-auto">
         <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200", class: "profile_image ml-5" %>
 
