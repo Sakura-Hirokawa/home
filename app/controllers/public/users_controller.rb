@@ -14,6 +14,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:primary] = "ユーザ情報を更新しました"
       redirect_to mypage_path(@user)
     else
       render 'edit'
@@ -28,6 +29,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
     reset_session
+    flash[:danger] = "退会処理が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to request.referer
   end
   

@@ -1,5 +1,4 @@
 class Public::ListsController < ApplicationController
-  before_action :authenticate_user!
   
   def new
     @list = List.new
@@ -37,6 +36,7 @@ class Public::ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
     if @list.update(list_params)
+      flash[:primary] = "リストを更新しました"
       redirect_to list_path(@list)
     else
       render 'edit'
@@ -46,6 +46,7 @@ class Public::ListsController < ApplicationController
   def destroy
     @list = List.find(params[:id])
     @list.destroy
+    flash[:danger] = "リストを削除しました"
     redirect_to lists_path
   end
   

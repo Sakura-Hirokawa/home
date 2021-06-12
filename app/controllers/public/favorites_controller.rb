@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  
   def create
     list = List.find(params[:list_id])
     favorite = current_user.favorites.new(list_id: list.id)

@@ -5,18 +5,19 @@ class Public::EventsController < ApplicationController
     @event = Event.new
   end
   
+  def index
+    @events = Event.where(user_id: current_user.id)
+  end
+  
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     if @event.save
+      flash[:success] = "スケジュールを登録しました"
       redirect_to event_path(@event)
     else
       render 'new'
     end
-  end
-  
-  def index
-    @events = Event.where(user_id: current_user.id)
   end
   
   def show
@@ -30,6 +31,7 @@ class Public::EventsController < ApplicationController
   
   def update
     if @event.update(event_params)
+      flash[:primary] = "スケジュールを更新しました"
       redirect_to event_path(@event)
     else
       render 'edit'
@@ -38,6 +40,7 @@ class Public::EventsController < ApplicationController
   
   def destroy
     @event.destroy
+    flash[:danger] = "スケジュールを削除しました"
     redirect_to my_calendar_path
   end
   

@@ -1,9 +1,11 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-sm-12 my-5">
-      <h1>スケジュール管理</h1>
+      <h1 class = "mb-5">スケジュール管理</h1>
+      <p class = "text-success"><%= flash[:success] %></p>
+      <p class = "text-primary"><%= flash[:primary] %></p>
       <!--イベント登録-->
-      <table class = "table table-striped my-5">
+      <table class = "table table-striped mb-5">
         <tbody>
           <tr>
             <th>スケジュール名</th>

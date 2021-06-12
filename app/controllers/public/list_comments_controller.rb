@@ -1,5 +1,4 @@
 class Public::ListCommentsController < ApplicationController
-  before_action :authenticate_user!
   
   def create
     @list = List.find(params[:list_id])
@@ -12,7 +11,8 @@ class Public::ListCommentsController < ApplicationController
   
   def destroy
     ListComment.find_by(id: params[:id], list_id: params[:list_id]).destroy
-    redirect_to list_path(params[:list_id])  
+    flash[:danger] = "コメントを削除しました"
+    redirect_to list_path(params[:list_id])
   end
   
   private
