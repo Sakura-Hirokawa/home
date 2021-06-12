@@ -44,6 +44,13 @@
   top: 100px;
  }
  
+ // 投稿詳細の項目の行間
  .list {
   line-height: 40px;
  }
+ 
+ // スケジュール登録
+ .datetime-form {
+  display: inline-block;
+  width: auto;
+}
