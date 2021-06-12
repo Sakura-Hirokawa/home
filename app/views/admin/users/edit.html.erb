@@ -2,6 +2,7 @@
   <div class = "row">
     <div class = "col-sm-8 mx-auto my-5">
       <h1 class = "mb-5"><%= @user.name %>さんのユーザ編集</h1>
+      <%= render 'layouts/errors', obj: @user %>
       <table class = "table table-striped">
         <tbody>
           <%= form_with model: [:admin, @user], local:true do |f| %>
