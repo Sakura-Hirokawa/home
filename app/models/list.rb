@@ -6,4 +6,7 @@ class List < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  
+  validates :date, presence: true
+  validates :first_item, presence: true, length: {maximum: 200}
 end

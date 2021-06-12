@@ -16,7 +16,7 @@ class Public::ListsController < ApplicationController
       redirect_to list_path(@list)
     else
       @lists = List.all
-      render 'index'
+      render 'new'
     end
   end
   
