@@ -16,11 +16,11 @@
           <%= list.user.name %>
         <% end %>
       </td>
-      <td>
+      <td class = "text-left">
         <%= link_to list.date.strftime('%Y/%m/%d'), list_path(list) %><br />
-        <%= list.first_item %><br />
-        <%= list.second_item %><br />
-        <%= list.third_item %>
+        ・<%= list.first_item %><br />
+        ・<%= list.second_item %><br />
+        ・<%= list.third_item %>
       </td>
       <td class = "align-middle">
         <i class="far fa-comment"><%= list.list_comments.count %></i>
