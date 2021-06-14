@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "homes#top"
+    get "/search" => "searches#search", as: "search"
     resources :users, only:[:index, :show, :edit, :update] do
       get "/relationship/followings" => "relationships#followings", as: "followings"
       get "/relationship/followers" => "relationships#followers", as: "followers"
