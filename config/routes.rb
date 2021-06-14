@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get "/users/:id/unsubscribe" => "users#unsubscribe", as: "unsubscribe"
     patch "/users/:id/withdraw" => "users#withdraw", as: "withdraw"
     resources :events, only:[:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :users, only:[:index, :edit, :update] do
+    resources :users, only:[:edit, :update] do
       resource :relationships, only:[:create, :destroy]
       get "/relationship/followings" => "relationships#followings", as: "followings"
       get "/relationship/followers" => "relationships#followers", as: "followers"
