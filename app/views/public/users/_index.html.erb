@@ -1,0 +1,31 @@
+<table class="table table-hover text-center">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th class = "text-left", style = "width: 65%">Introduction</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to mypage_path(user) do %>
+          <%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td class = "text-left">
+        <%= user.introduction %>
+      </td>
+      <td class = "align-middle">
+        <% if current_user.following?(user) %>
+          <%= link_to "フォローを外す", user_relationships_path(user), method: :delete, class: "btn btn-warning" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user), method: :post, class: "btn btn btn-outline-warning" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
